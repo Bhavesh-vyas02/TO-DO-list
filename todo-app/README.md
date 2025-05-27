@@ -1,52 +1,99 @@
 # README.md
 
-# To-Do List Application
+# ✨ Task Master
 
-This is a dynamic To-Do list application where users can add, remove, and mark tasks as complete. The application is built using HTML, CSS, and JavaScript.
+A modern, feature-rich task management application built with HTML, CSS, and JavaScript.
 
-## Project Structure
+## 🚀 Features
 
+- **Task Management**
+  - Create, edit, and delete tasks
+  - Set priority levels (High 🔴, Medium 🟡, Low 🟢)
+  - Add due dates
+  - Categorize tasks (Personal, Work, Shopping, Other)
+  - Mark tasks as complete/incomplete
+
+- **Organization**
+  - Drag and drop to reorder tasks
+  - Filter tasks by:
+    - Priority
+    - Category
+    - Status (Completed/Pending)
+  - Search tasks
+  - Task statistics
+
+- **Data Management**
+  - Local storage persistence
+  - Import/Export tasks (JSON format)
+
+- **User Interface**
+  - Clean, modern design
+  - Dark/Light theme toggle
+  - Responsive layout
+  - Smooth animations
+  - Accessibility features
+
+## 🛠️ Technical Details
+
+### Technologies Used
+- HTML5
+- CSS3
+- JavaScript (ES6+)
+- Font Awesome Icons
+- Local Storage API
+
+### Project Structure
 ```
-todo-app
-├── src
-│   ├── index.html        # Basic HTML structure for the application
-│   ├── css
-│   │   └── style.css     # CSS styles for the application
-│   ├── js
-│   │   └── app.js        # JavaScript code for functionality
-│   └── types
-│       └── todo.d.ts     # TypeScript types and interfaces
-├── package.json          # npm configuration file
-├── tsconfig.json         # TypeScript configuration file
-└── README.md             # Project documentation
+todo-app/
+├── src/
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   └── app.js
+│   └── index.html
+└── README.md
 ```
 
-## Setup Instructions
+## 🚦 Getting Started
 
 1. Clone the repository:
-   ```
-   git clone <repository-url>
-   ```
+```bash
+git clone <repository-url>
+cd todo-app
+```
 
-2. Navigate to the project directory:
-   ```
-   cd todo-app
-   ```
+2. Open `index.html` in your browser or use a local server:
+```bash
+# Using Python
+python -m http.server 8000
 
-3. Install dependencies:
-   ```
-   npm install
-   ```
+# Using Node.js
+npx serve
+```
 
-4. Open `src/index.html` in your browser to view the application.
+## 💡 Usage
 
-## Usage Guidelines
+1. **Adding Tasks**
+   - Enter task description
+   - Select priority level
+   - Set due date
+   - Choose category
+   - Click "Add Task" or press Enter
 
-- Use the input field to add new tasks.
-- Click the "Add" button to append tasks to the list.
-- Click on a task to mark it as complete.
-- Use the remove button next to each task to delete it from the list.
+2. **Managing Tasks**
+   - Click checkbox to mark as complete
+   - Drag tasks to reorder
+   - Use filters to sort and find tasks
+   - Use search to find specific tasks
 
-## Testing
+3. **Data Management**
+   - Tasks are automatically saved to local storage
+   - Use Export/Import buttons to backup or transfer tasks
 
-Ensure that you can add, complete, and delete tasks. The UI should update instantly without a page reload.
+## 🎨 Customization
+
+The app uses CSS variables for easy theme customization. Main colors and styles can be modified in `style.css`.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
