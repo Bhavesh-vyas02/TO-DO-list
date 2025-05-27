@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Master</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <h1>✨ Task Master ✨</h1>
+            <button id="themeToggle" aria-label="Toggle theme">
+                <i class="fas fa-sun" aria-hidden="true"></i>
+                <i class="fas fa-moon" aria-hidden="true"></i>
+            </button>
+        </header>
+
+        <!-- Action Buttons -->
+        <div class="actions">
+            <button id="exportBtn" aria-label="Export Tasks">
+                <i class="fas fa-file-export" aria-hidden="true"></i> Export Tasks
+            </button>
+            <input type="file" id="importBtn" accept=".json" hidden>
+            <button id="importTrigger" aria-label="Import Tasks">
+                <i class="fas fa-file-import" aria-hidden="true"></i> Import Tasks
+            </button>
+        </div>
+        
+        <!-- Task Input Section -->
+        <div class="input-container">
+            <form class="task-form" id="taskForm">
+                <input type="text" id="taskInput" placeholder="What needs to be done?" required>
+                
+                <div class="task-options">
+                    <select id="prioritySelect" required>
+                        <option value="">Select Priority</option>
+                        <option value="high">🔴 High Priority</option>
+                        <option value="medium">🟡 Medium Priority</option>
+                        <option value="low">🟢 Low Priority</option>
+                    </select>
+
+                    <input type="date" id="dueDate" required>
+
+                    <select id="categorySelect" required>
+                        <option value="">Select Category</option>
+                        <option value="personal">Personal</option>
+                        <option value="work">Work</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <button type="submit" id="addButton">
+                    <i class="fas fa-plus" aria-hidden="true"></i> Add Task
+                </button>
+            </form>
+        </div>
+
+        <!-- Filters Section -->
+        <div class="filters">
+            <div class="search-box">
+                <input type="search" id="searchInput" placeholder="Search tasks...">
+            </div>
+            
+            <div class="filter-options">
+                <select id="filterPriority" aria-label="Filter by priority">
+                    <option value="all">All Priorities</option>
+                    <option value="high">High Priority</option>
+                    <option value="medium">Medium Priority</option>
+                    <option value="low">Low Priority</option>
+                </select>
+
+                <select id="filterCategory" aria-label="Filter by category">
+                    <option value="all">All Categories</option>
+                    <option value="personal">Personal</option>
+                    <option value="work">Work</option>
+                    <option value="shopping">Shopping</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <select id="filterStatus" aria-label="Filter by status">
+                    <option value="all">All Status</option>
+                    <option value="pending">Pending</option>
+                    <option value="completed">Completed</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Task List -->
+        <ul id="taskList" aria-label="Task list"></ul>
+
+        <!-- Task Stats -->
+        <div class="task-stats" role="status">
+            <span id="totalTasks">Total: 0</span>
+            <span id="completedTasks">Completed: 0</span>
+            <span id="pendingTasks">Pending: 0</span>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

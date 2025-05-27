@@ -1,0 +1,577 @@
+:root {
+    --primary-color: #764ba2;
+    --secondary-color: #667eea;
+    --background-light: #ffffff;
+    --background-dark: #1a1a1a;
+    --text-light: #2d3436;
+    --text-dark: #ffffff;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --input-bg-light: #ffffff;
+    --input-bg-dark: #374151;
+    --input-border-light: #dfe6e9;
+    --input-border-dark: #4b5563;
+    --card-bg-dark: #1f2937;
+}
+
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(
+        135deg,
+        var(--primary-color),
+        var(--secondary-color)
+    );
+    min-height: 100vh;
+    padding: 2rem;
+    transition: background-color 0.3s ease;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    --background-light: #111827;
+    --text-light: #f5f6fa;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --primary-color: #8b5cf6;
+    --secondary-color: #7c3aed;
+    background: var(--background-dark);
+    color: var(--text-dark);
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--background-light);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    color: var(--text-light);
+    font-size: 2.5rem;
+}
+
+/* Theme toggle button */
+#themeToggle {
+    background: transparent;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+#themeToggle:hover {
+    transform: rotate(45deg);
+}
+
+/* Icon visibility in light mode */
+#themeToggle .fa-sun {
+    display: none;
+}
+
+#themeToggle .fa-moon {
+    display: inline-block;
+}
+
+/* Icon visibility in dark mode */
+body.dark-mode #themeToggle .fa-sun {
+    display: inline-block;
+}
+
+body.dark-mode #themeToggle .fa-moon {
+    display: none;
+}
+
+/* Action Buttons */
+.actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.actions button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.actions button:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+/* Task Input Section */
+.task-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+#taskInput {
+    padding: 1rem;
+    border: 2px solid #dfe6e9;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+#taskInput:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.task-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+/* Filters Section */
+.filters {
+    background: rgba(0, 0, 0, 0.05);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.search-box {
+    margin-bottom: 1rem;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #dfe6e9;
+    border-radius: 8px;
+}
+
+.filter-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+/* Task List */
+#taskList {
+    list-style: none;
+    margin: 2rem 0;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 1.2rem;
+    background: var(--background-light);
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    transition: all 0.3s ease;
+    cursor: grab;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.task-item:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow), 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.task-item:active {
+    cursor: grabbing;
+}
+
+.task-item.dragging {
+    opacity: 0.5;
+    cursor: grabbing;
+}
+
+/* Task checkbox enhancement */
+.task-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 2px solid var(--primary-color);
+    transition: all 0.2s ease;
+}
+
+/* Task content wrapper */
+.task-content {
+    flex: 1;
+    margin: 0 1rem;
+}
+
+/* Enhanced task title */
+.task-title {
+    font-weight: 600;
+    color: var(--text-light);
+    margin-bottom: 0.4rem;
+    font-size: 1.1rem;
+}
+
+/* Improved task details */
+.task-details {
+    font-size: 0.85rem;
+    color: #636e72;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: 0.3rem;
+    flex-wrap: wrap;
+}
+
+/* Enhanced priority badges */
+.priority-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.priority-high {
+    background-color: #ff7675;
+    color: white;
+}
+
+.priority-medium {
+    background-color: #ffeaa7;
+    color: #2d3436;
+}
+
+.priority-low {
+    background-color: #55efc4;
+    color: #2d3436;
+}
+
+/* Due date styling */
+.due-date {
+    color: #636e72;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+/* Category tag */
+.category {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+}
+
+/* Delete button styling */
+.delete-btn {
+    opacity: 0;
+    transition: all 0.3s ease;
+    margin-left: auto;
+    background: #ff7675;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-btn i {
+    font-size: 1rem;
+}
+
+.task-item:hover .delete-btn {
+    opacity: 1;
+}
+
+.delete-btn:hover {
+    background: #d63031;
+    transform: scale(1.1);
+}
+
+/* Task Stats */
+.task-stats {
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+.task-stats span {
+    font-weight: bold;
+    color: var(--text-light);
+}
+
+/* Update select styles for both themes */
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0.8rem 2.5rem 0.8rem 1rem; /* Adjusted padding for arrow */
+    border: 2px solid var(--input-border-light);
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: var(--input-bg-light);
+    color: var(--text-light);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%232d3436' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 12px) center;
+    background-size: 12px;
+    transition: all 0.3s ease;
+}
+
+/* Dark mode select arrow */
+body.dark-mode select {
+    background-color: var(--input-bg-dark);
+    border-color: var(--input-border-dark);
+    color: var(--text-light);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23f5f6fa' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+}
+
+/* Hover and focus states */
+select:hover {
+    border-color: var(--primary-color);
+}
+
+select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(118, 75, 162, 0.2);
+}
+
+/* Date Input Styles */
+input[type="date"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0.8rem 1rem;
+    border: 2px solid var(--input-border-light);
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: var(--input-bg-light);
+    color: var(--text-light);
+    min-width: 200px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Dark mode date input */
+body.dark-mode input[type="date"] {
+    background-color: var(--input-bg-dark);
+    border-color: var(--input-border-dark);
+    color: var(--text-light);
+}
+
+/* Calendar icon color adjustment */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: var(--calendar-icon-filter, none);
+    cursor: pointer;
+    padding: 5px;
+}
+
+body.dark-mode input[type="date"]::-webkit-calendar-picker-indicator {
+    --calendar-icon-filter: invert(1);
+}
+
+/* Hover and focus states for date input */
+input[type="date"]:hover {
+    border-color: var(--primary-color);
+}
+
+input[type="date"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(118, 75, 162, 0.2);
+}
+
+/* Priority colors in select dropdown */
+#prioritySelect option[value="high"] {
+    background-color: #ff7675;
+    color: white;
+}
+
+#prioritySelect option[value="medium"] {
+    background-color: #ffeaa7;
+    color: #2d3436;
+}
+
+#prioritySelect option[value="low"] {
+    background-color: #55efc4;
+    color: #2d3436;
+}
+
+/* Priority badge colors */
+.priority-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.priority-high {
+    background-color: #ff7675;
+    color: white;
+}
+
+.priority-medium {
+    background-color: #ffeaa7;
+    color: #2d3436;
+}
+
+.priority-low {
+    background-color: #55efc4;
+    color: #2d3436;
+}
+
+/* Priority select styling */
+#prioritySelect {
+    border-color: #dfe6e9;
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+
+#prioritySelect:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .task-options,
+    .filter-options {
+        grid-template-columns: 1fr;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.task-item {
+    animation: fadeIn 0.3s ease;
+}
+
+/* Update dark mode variables */
+body.dark-mode {
+    --background-light: #111827;
+    --text-light: #f5f6fa;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --primary-color: #8b5cf6;
+    --secondary-color: #7c3aed;
+}
+
+/* Update input fields for dark mode */
+body.dark-mode #taskInput,
+body.dark-mode #searchInput,
+body.dark-mode select,
+body.dark-mode .task-options select {
+    background-color: var(--input-bg-dark);
+    border-color: var(--input-border-dark);
+    color: var(--text-light);
+}
+
+/* Update task items for dark mode */
+body.dark-mode .task-item {
+    background: var(--card-bg-dark);
+    border: 1px solid var(--input-border-dark);
+}
+
+/* Update filters section for dark mode */
+body.dark-mode .filters,
+body.dark-mode .task-stats {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Update placeholder color for dark mode */
+body.dark-mode input::placeholder {
+    color: #9ca3af;
+}
+
+/* Update focus states for dark mode */
+body.dark-mode #taskInput:focus,
+body.dark-mode #searchInput:focus,
+body.dark-mode select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+}
+
+/* Update hover states for task items in dark mode */
+body.dark-mode .task-item:hover {
+    background: var(--input-bg-dark);
+}
+
+/* Update action buttons in dark mode */
+body.dark-mode .actions button {
+    background: var(--primary-color);
+    color: white;
+}
+
+body.dark-mode .actions button:hover {
+    background: var(--secondary-color);
+}
+
+/* Add subtle transition for theme switching */
+.container,
+#taskInput,
+#searchInput,
+select,
+.task-item,
+.filters,
+.task-stats {
+    transition: all 0.3s ease;
+}

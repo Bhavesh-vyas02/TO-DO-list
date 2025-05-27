@@ -1,0 +1,17 @@
+{
+  "name": "todo-app",
+  "version": "1.0.0",
+  "description": "A dynamic To-Do list application where users can add, remove, and mark tasks complete.",
+  "main": "src/js/app.js",
+  "scripts": {
+    "start": "live-server src",
+    "build": "tsc"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^4.0.0",
+    "live-server": "^1.2.1"
+  },
+  "author": "",
+  "license": "ISC"
+}
