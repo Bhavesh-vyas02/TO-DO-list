@@ -58,7 +58,7 @@ todo-app/
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/Bhavesh-vyas02/TO-DO-list.git
 cd todo-app
 ```
 
